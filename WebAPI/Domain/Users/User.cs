@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using WebAPI.Domain.Messages;
 
 namespace WebAPI.Domain.Users
 {
-    public class User
+    public class User : IdentityUser
     {
         [Key]
         public Guid Id { get; set; }

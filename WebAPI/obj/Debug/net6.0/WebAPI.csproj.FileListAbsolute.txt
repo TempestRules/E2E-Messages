@@ -54,3 +54,9 @@ C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\obj\Debug\net6.0\refint\WebA
 C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\obj\Debug\net6.0\WebAPI.pdb
 C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\obj\Debug\net6.0\WebAPI.genruntimeconfig.cache
 C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\obj\Debug\net6.0\ref\WebAPI.dll
+C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\velmk\Documents\GitHub\E2E-Messages\WebAPI\bin\Debug\net6.0\System.Security.Permissions.dll
