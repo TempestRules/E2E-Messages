@@ -6,12 +6,6 @@ namespace WebAPI.Domain.Users
 {
     public class User : IdentityUser
     {
-        [Key]
-        public Guid Id { get; set; }
-
-        [Required]
-        public string UserName { get; set; }
-
         // Additional user properties, if needed
         public string PublicKey { get; set; }
 

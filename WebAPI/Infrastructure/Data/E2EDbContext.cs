@@ -10,7 +10,6 @@ namespace WebAPI.Infrastructure.Data
 
         public E2EDbContext(DbContextOptions<E2EDbContext> options) : base(options)
         {
-            
         }
 
         public DbSet<User> Users { get; set; }
