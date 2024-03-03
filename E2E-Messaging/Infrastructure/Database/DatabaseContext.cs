@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Database
 {
-    public sealed class E2EMessagingDatabaseContext : DbContext
+    public sealed class E2EMessagingDatabaseContext : IdentityDbContext
     {
 
         public E2EMessagingDatabaseContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
