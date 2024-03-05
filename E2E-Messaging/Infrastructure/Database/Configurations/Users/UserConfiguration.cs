@@ -4,11 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Database.Configurations.Users
 {
-    internal class UserConfiguration : IEntityTypeConfiguration<AppUser>
+    internal sealed class UserConfiguration : IEntityTypeConfiguration<AppUser>
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-            throw new NotImplementedException();
+            builder.Property(e => e.UserName).IsRequired();
+            builder.Property(e => e.Email).IsRequired();
+            builder.Property(e => e.PasswordHash).IsRequired();
         }
     }
 }
