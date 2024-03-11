@@ -1,4 +1,5 @@
-﻿using Domain.Models.Users;
+﻿using Application.Authentication;
+using Domain.Models.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
@@ -13,10 +14,14 @@ namespace WebAPI.Accounts
     {
 
         private readonly UserManager<AppUser> _userManager;
+        private readonly IJWTService _jwtService;
 
-        public AccountController(UserManager<AppUser> userManager)
+        public AccountController(
+            UserManager<AppUser> userManager,
+            IJWTService jwtService)
         {
             _userManager = userManager;
+            _jwtService = jwtService;
         }
 
         [HttpPost("register")]
@@ -35,6 +40,7 @@ namespace WebAPI.Accounts
                 var roleResult = await _userManager.AddToRoleAsync(user, "User");
                 if (roleResult.Succeeded)
                 {
+                    var token = _jwtService.CreateToken(user);
                     return Created();
                 }
             }

@@ -1,3 +1,4 @@
+using Application;
 using Infrastructure;
 using Infrastructure.Database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -22,6 +23,7 @@ builder.Services.AddDbContext<E2EMessagingDatabaseContext>(options =>
         });
 });
 
+builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
 
 builder.Services.AddAuthentication(options =>
