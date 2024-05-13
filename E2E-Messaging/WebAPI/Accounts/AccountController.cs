@@ -1,9 +1,8 @@
-﻿using Application.Authentication;
-using Domain.Models.Users;
-using Microsoft.AspNetCore.Identity;
+﻿using Application.Accounts.Handlers.SignInUser;
+using Application.Accounts.Models;
+using Application.Users.Handlers.CreateUser;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using WebAPI.Accounts.Models;
 
 namespace WebAPI.Accounts
 {
@@ -11,18 +10,11 @@ namespace WebAPI.Accounts
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly IJWTService _jwtService;
+        private readonly IMediator _mediator;
 
-        public AccountController(
-            UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager,
-            IJWTService jwtService)
+        public AccountController(IMediator mediator)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _jwtService = jwtService;
+            _mediator = mediator;
         }
 
         [HttpPost("login")]
@@ -33,17 +25,11 @@ namespace WebAPI.Accounts
                 return BadRequest(ModelState);
             }
 
-            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == model.Username);
+            var signInResult = await _mediator.Send(new SignInUserRequest(model));
 
-            if (user != null)
+            if (signInResult.SignInSucceded)
             {
-                var signIn = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-
-                if (signIn.Succeeded)
-                {
-                    var token = _jwtService.CreateToken(user);
-                    return Ok(token);
-                }
+                return Ok(signInResult.JwtToken);
             }
 
             return Unauthorized();
@@ -52,29 +38,19 @@ namespace WebAPI.Accounts
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var user = new AppUser
+            if (!ModelState.IsValid)
             {
-                UserName = model.Username,
-                Email = model.Email
-            };
-
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
-            {
-                var roleResult = await _userManager.AddToRoleAsync(user, "User");
-                if (roleResult.Succeeded)
-                {
-                    var token = _jwtService.CreateToken(user);
-                    return Created();
-                }
-            }
-            else
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
+                return BadRequest(ModelState);
             }
 
-            return BadRequest(result.Errors);
+            var createUserResult = await _mediator.Send(new CreateUserRequest(model));
+
+            if (createUserResult.UserResult.Succeeded)
+            {
+                return Accepted(createUserResult.JwtToken);
+            }
+
+            return BadRequest(createUserResult.UserResult.Errors);
         }
     }
 }

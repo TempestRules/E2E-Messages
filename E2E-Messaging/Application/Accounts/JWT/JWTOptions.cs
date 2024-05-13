@@ -1,4 +1,4 @@
-﻿namespace Application.Authentication
+﻿namespace Application.Accounts.JWT
 {
     public class JWTOptions
     {

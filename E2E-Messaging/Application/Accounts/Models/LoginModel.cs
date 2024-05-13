@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebAPI.Accounts.Models
+namespace Application.Accounts.Models
 {
     public class LoginModel
     {

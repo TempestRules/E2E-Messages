@@ -1,6 +1,6 @@
 ﻿using Domain.Models.Users;
 
-namespace Application.Authentication
+namespace Application.Accounts.JWT
 {
     public interface IJWTService
     {
