@@ -1,5 +1,4 @@
 ﻿using Domain.Models.Users;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -9,13 +8,13 @@ namespace Application.Authentication
 {
     public class TokenService : IJWTService
     {
-        private readonly IConfiguration _config;
+        private readonly JWTOptions _jwtOptions;
         private readonly SymmetricSecurityKey _key;
 
-        public TokenService(IConfiguration config)
+        public TokenService(JWTOptions jwtOptions)
         {
-            _config = config;
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SigningKey"]!));
+            _jwtOptions = jwtOptions;
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SigningKey));
         }
         public string CreateToken(AppUser user)
         {
@@ -30,10 +29,10 @@ namespace Application.Authentication
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = creds,
-                Issuer = _config["JWT:Issuer"],
-                Audience = _config["JWT:Audience"]
+                Issuer = _jwtOptions.Issuer,
+                Audience = _jwtOptions.Audience
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
