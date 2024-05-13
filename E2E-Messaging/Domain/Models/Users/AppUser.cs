@@ -3,7 +3,6 @@
 namespace Domain.Models.Users
 {
     public class AppUser : IdentityUser
-    {
-        
+    { 
     }
 }

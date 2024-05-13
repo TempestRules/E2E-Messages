@@ -7,7 +7,6 @@ namespace Infrastructure.Database
 {
     public sealed class E2EMessagingDatabaseContext : IdentityDbContext
     {
-
         public E2EMessagingDatabaseContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
         }

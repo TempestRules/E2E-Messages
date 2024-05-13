@@ -1,7 +1,5 @@
 ﻿using Application.Authentication;
 using Domain.Models.Users;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Accounts.Models;
@@ -12,7 +10,6 @@ namespace WebAPI.Accounts
     [ApiController]
     public class AccountController : ControllerBase
     {
-
         private readonly UserManager<AppUser> _userManager;
         private readonly IJWTService _jwtService;
 
@@ -51,6 +48,5 @@ namespace WebAPI.Accounts
 
             return BadRequest(result.Errors);
         }
-
     }
 }
