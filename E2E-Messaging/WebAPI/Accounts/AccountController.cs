@@ -2,12 +2,14 @@
 using Application.Accounts.Models;
 using Application.Users.Handlers.CreateUser;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Accounts
 {
     [Route("api/account")]
     [ApiController]
+    [AllowAnonymous]
     public class AccountController : ControllerBase
     {
         private readonly IMediator _mediator;

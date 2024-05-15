@@ -1,4 +1,5 @@
-﻿using Infrastructure.Database.Configurations.Users;
+﻿using Infrastructure.Database.Configurations.Messages;
+using Infrastructure.Database.Configurations.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ namespace Infrastructure.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new MessageConfiguration());
 
             base.OnModelCreating(modelBuilder);
 
