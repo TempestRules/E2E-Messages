@@ -1,0 +1,33 @@
+img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(24, 51, 51);
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+}
+
+.form-field {
+    width: 100%;
+}
+
+.sign-in-button {
+    margin-top: 20px;
+}
