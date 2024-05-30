@@ -1,0 +1,56 @@
+<h3>Create your E2E Messaging Account</h3>
+<h4>Sign up</h4>
+<form [formGroup]="signUpForm" (ngSubmit)="handleSubmit()">
+    <mat-form-field class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form-field">
+        <mat-label>Password</mat-label>
+        <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password">
+        <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="clickPassword($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+        <mat-label>Repeat Password</mat-label>
+        <input
+            matInput
+            [type]="hideRepeatPassword ? 'password' : 'text'"
+            formControlName="repeatPassword">
+        <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="clickRepeatPassword($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hideRepeatPassword">
+                <mat-icon>{{hideRepeatPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <button 
+        type="submit"
+        mat-flat-button
+        color="accent"
+        class="form-field sign-up-button">
+        Create account
+    </button>
+</form>
+<div class="sign-in-link">
+    Already have an account? 
+    <a
+        routerLink="/front/sign-in"
+        routerLinkActive="active"
+        style="padding-left: 5px;">Sign in
+    </a>
+</div>

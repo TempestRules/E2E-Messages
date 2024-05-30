@@ -1,0 +1,41 @@
+<h3>Welcome to my E2E Encrypted PWA</h3>
+<h4>Sign in</h4>
+<form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+    <mat-form-field class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form-field">
+        <mat-label>Password</mat-label>
+        <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password">
+        <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="clickEvent($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-radio-button value="1">Keep me signed in</mat-radio-button>
+    <button 
+        type="submit"
+        mat-flat-button
+        color="accent"
+        class="form-field sign-in-button">
+        Login
+    </button>
+</form>
+<div class="sign-up-link">
+    New to the app? 
+    <a
+        routerLink="/front/sign-up"
+        routerLinkActive="active"
+        style="padding-left: 5px;">Create account
+    </a>
+</div>

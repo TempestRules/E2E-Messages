@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,9 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-sign-in',
   standalone: true,
   imports: [
+    RouterLink,
+    RouterLinkActive,
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -17,10 +20,10 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatRadioModule
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './sign-in.component.html',
+  styleUrl: './sign-in.component.scss'
 })
-export class LoginComponent {
+export class SignInComponent {
   
   public hidePassword = true;
 
