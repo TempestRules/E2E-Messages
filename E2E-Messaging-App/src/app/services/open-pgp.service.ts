@@ -20,4 +20,26 @@ export class OpenPGPService {
 
     return { privateKey, publicKey };
   }
+
+
+  public async encryptMessage(
+    message: string,
+    senderPublicKey: string,
+    receiverPublicKey: string): Promise<openpgp.WebStream<string>> {
+
+      const publicKeysArmored: string[] = [senderPublicKey, receiverPublicKey];
+
+      const publicKeys = await Promise.all(publicKeysArmored.map(armoredKey => openpgp.readKey({ armoredKey })));
+
+      const pgpMessage = await openpgp.createMessage({ text: message });
+      const encrypted = await openpgp.encrypt({
+          message: pgpMessage,
+          encryptionKeys: publicKeys,
+          //signingKeys: privateKey // optional
+      });
+      
+      console.log(encrypted);
+
+      return encrypted;
+  }
 }
