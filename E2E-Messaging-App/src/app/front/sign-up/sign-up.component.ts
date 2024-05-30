@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { OpenPGPService } from '../../services/open-pgp.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,6 +23,8 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
+
+  constructor(private pgpService: OpenPGPService) { }
   
   public hidePassword = true;
   public hideRepeatPassword = true;
@@ -42,7 +45,8 @@ export class SignUpComponent {
     event.stopPropagation();
   }
 
-  public handleSubmit() {
+  public async handleSubmit() {
+    await this.pgpService.generateKeyPair("username", "password");
     alert(this.signUpForm.value.username + ' | ' + this.signUpForm.value.password);
   }
 }
