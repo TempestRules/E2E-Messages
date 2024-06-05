@@ -8,8 +8,45 @@
     align-items: center;
     justify-content: end;
 }
-  
+
 .sidenav {
     border: 1px solid rgba(65, 65, 65, 0.5);
 }
-  
+
+.messages {
+    overflow-y: auto;
+    height: 100%;
+    width: 100vw;
+}
+
+.message-form {
+    width: 90vw;
+}
+
+.message-card-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //TODO Adjust this for aligning sender and receiver messages.
+    align-items: end;
+}
+
+.message-card {
+    background-color: rgba(255, 166, 0, 0.747);
+    margin: 10px;
+    max-width: 60%;
+}
+
+//TODO
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.example-card {
+    border: 1px solid rgba(65, 65, 65, 0.5);
+}
+
+.example-card:hover {
+    background: #f0f0f081;
+}

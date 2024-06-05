@@ -22,4 +22,8 @@ export class HeaderComponent {
     this.showSideNavEmitter.emit();
   }
 
+  public openLink(): void {
+    window.open('https://youtu.be/RXKabdUBiWM?t=26', '_blank');
+  }
+
 }
