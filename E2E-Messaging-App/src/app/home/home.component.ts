@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "./header/header.component";
-import { SideNavComponent } from "./side-nav/side-nav.component";
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
     selector: 'app-home',
@@ -9,13 +10,15 @@ import { SideNavComponent } from "./side-nav/side-nav.component";
     styleUrl: './home.component.scss',
     imports: [
         HeaderComponent,
-        SideNavComponent
+        MatButtonModule,
+        MatSidenavModule
     ]
 })
 export class HomeComponent {
+  public showSideNav: boolean = false;
 
-  constructor() {
-
+  public toggleSideNav(): void {
+    this.showSideNav = !this.showSideNav;
   }
 
 }

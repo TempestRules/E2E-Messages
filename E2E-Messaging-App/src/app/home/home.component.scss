@@ -1,0 +1,15 @@
+.sidenav-container {
+    height: 95vh;
+}
+
+.sidenav-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+  
+.sidenav {
+    border: 1px solid rgba(65, 65, 65, 0.5);
+}
+  

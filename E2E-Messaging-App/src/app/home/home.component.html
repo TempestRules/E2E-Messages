@@ -1,6 +1,20 @@
 <header>
-    <app-header></app-header>
+    <app-header (showSideNavEmitter)="toggleSideNav()"></app-header>
 </header>
 <main>
-    <app-side-nav></app-side-nav>
+    <mat-sidenav-container
+        autosize
+        class="sidenav-container">
+        <mat-sidenav
+            [opened]="showSideNav"
+            class="sidenav"
+            mode="over">
+                <p>Auto-resizing sidenav</p>
+        </mat-sidenav>
+        <mat-sidenav-content class="sidenav-content">
+            <div>Main content</div>
+            <div>Main content</div>
+            <div>Main content</div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </main>
