@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,7 +19,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
