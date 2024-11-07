@@ -23,7 +23,8 @@ namespace Application.Users.Handlers.CreateUser
             var user = new AppUser
             {
                 UserName = request.RegisterModel.Username,
-                Email = request.RegisterModel.Email
+                PublicPgpKey = request.RegisterModel.PublicKey,
+                PrivatePgpKey = request.RegisterModel.PrivateKey
             };
 
             var result = await _userManager.CreateAsync(user, request.RegisterModel.Password);

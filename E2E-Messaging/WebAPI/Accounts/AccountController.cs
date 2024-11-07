@@ -1,5 +1,6 @@
 ﻿using Application.Accounts.Handlers.SignInUser;
 using Application.Accounts.Models;
+using Application.Users.Handlers.CheckUsername;
 using Application.Users.Handlers.CreateUser;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -49,10 +50,18 @@ namespace WebAPI.Accounts
 
             if (createUserResult.UserResult.Succeeded)
             {
-                return Accepted(createUserResult.JwtToken);
+                return Ok(createUserResult.JwtToken);
             }
+            else
+            {
+                return BadRequest(createUserResult.UserResult.Errors);
+            }
+        }
 
-            return BadRequest(createUserResult.UserResult.Errors);
+        [HttpGet("check-username/{username}")]
+        public async Task<IActionResult> CheckUsername([FromRoute] string username)
+        {
+            return Ok(await _mediator.Send(new CheckUsernameExistsQuery(username)));
         }
     }
 }

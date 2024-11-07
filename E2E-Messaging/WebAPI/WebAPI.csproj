@@ -26,21 +26,4 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
-  <Target Name="CleanUp" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'Release'">
-    <RemoveDir Directories="$(ProjectDir)../../E2E-Messaging-App/src/app/core/generated" />
-  </Target>
-
-  <Target Name="SwaggerGen" AfterTargets="CleanUp">
-    <Exec Command="swagger tofile --output $(ProjectDir)openapi.json ./$(OutDir)/WebAPI.dll v1" WorkingDirectory="$(ProjectDir)" />
-  </Target>
-
-  <Target Name="TypescriptGen" AfterTargets="SwaggerGen" Condition="'$(Configuration)' != 'Release'">
-    <Exec WorkingDirectory="$(ProjectDir)" Command="docker run --rm -v $(ProjectDir)../../:/local swaggerapi/swagger-codegen-cli-v3:3.0.57 generate -i /local/E2E-Messaging/WebAPI/openapi.json -l typescript-angular -o local/E2E-Messaging-App/src/app/generated/ --additional-properties ngVersion=18">
-    </Exec>
-  </Target>
-
-  <Target Name="RemoveOpenAPIJson" AfterTargets="TypescriptGen" Condition="'$(Configuration)' != 'Release'">
-    <Delete Files="$(ProjectDir)openapi.json" />
-  </Target>
-
 </Project>

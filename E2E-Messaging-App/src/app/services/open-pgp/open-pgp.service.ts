@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as openpgp from 'openpgp';
-import { KeyPair } from '../models/keypair';
+import { KeyPair } from './models/keypair';
 
 @Injectable({
   providedIn: 'root'

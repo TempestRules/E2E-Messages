@@ -5,9 +5,9 @@ namespace Domain.Models.Users
 {
     public class AppUser : IdentityUser
     {
-        public string PublicPgpKey { get; set; } = string.Empty;
+        public required string PublicPgpKey { get; set; }
 
-        public string PrivatePgpKey { get; set; } = string.Empty;
+        public required string PrivatePgpKey { get; set; }
 
         public List<Message> SentMessages { get; set; } = new();
 

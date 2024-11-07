@@ -16,7 +16,6 @@ namespace Infrastructure
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireNonAlphanumeric = true;
-                options.User.RequireUniqueEmail = true;
             })
             .AddEntityFrameworkStores<E2EMessagingDatabaseContext>();
 

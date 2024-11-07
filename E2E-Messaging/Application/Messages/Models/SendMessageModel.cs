@@ -1,6 +1,6 @@
 ﻿namespace Application.Messages.Models
 {
-    public class SendMessageModel
+    public record SendMessageModel
     {
         public string SenderUsername { get; set; } = string.Empty;
 

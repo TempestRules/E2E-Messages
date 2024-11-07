@@ -8,9 +8,12 @@ namespace Application.Accounts.Models
         public string Username { get; set; } = string.Empty;
 
         [Required]
-        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
 
         [Required]
-        public string Password { get; set; } = string.Empty;
+        public string PublicKey { get; set; } = string.Empty;
+
+        [Required]
+        public string PrivateKey { get; set; } = string.Empty;
     }
 }
